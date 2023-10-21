@@ -12,6 +12,9 @@
         font-weight: bold;
         @apply bg-[#F4F4F4];
     }
+    input:focus, button:focus, textarea:focus {
+        outline: none;
+    }
 }
 
 @layer components {
@@ -20,5 +23,20 @@
     }
     .button-text-1 {
         @apply text-[20px] text-[#333333];
+    }  
+
+    .container-box-reg {
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+        @apply relative flex flex-col items-center w-[500px] h-[500px] rounded-[35px] bg-white;
+    }
+    .email-input::placeholder {
+        @apply text-[20px] text-[#999999];
+    }
+    .password-input::placeholder {
+        @apply text-[20px] text-[#999999];
+    }
+    .submit {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        @apply text-[25px] text-[#333333] flex justify-center items-center mt-[100px] w-[170px] h-[50px] rounded-[15px] duration-300 hover:bg-[#F4F4F4];
     }
 }
