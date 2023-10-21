@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--cqtol$rvwj!fm66!m5%a@ut#4c+jwc7r%0q5%8a$a+^o&@)od'
+SECRET_KEY = 'django-insecure--cqtol$rvwj!Pushistic_Is_My_Best_Kowala_fm66!m5%a@ut#4c+jwc7r%0q5%8a$a+^o&@)od'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     'Products',
     'api',
     'rest_framework',
-    'user'
+    'user',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +59,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Замените на адрес вашего клиентского приложения
+    "http://127.0.0.1:9000",   # Замените на адрес другого клиентского приложения, если необходимо
+    # Другие разрешенные домены
+]
+
 
 ROOT_URLCONF = 'FastReportsServer.urls'
 
@@ -86,10 +95,15 @@ WSGI_APPLICATION = 'FastReportsServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydatabase',          # Имя вашей базы данных
+        'USER': 'yourusername',       # Ваше имя пользователя MySQL
+        'PASSWORD': r'Pushistic_Is_The_Best_Kowala2801',   # Ваш пароль MySQL
+        'HOST': 'localhost',          # Хост, на котором работает MySQL
+        'PORT': '3306',               # Порт MySQL (по умолчанию 3306)
     }
 }
+
 
 
 # Password validation

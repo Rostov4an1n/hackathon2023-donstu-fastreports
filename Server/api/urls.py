@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    # Маршруты для работы с продуктами
-    path('products/', views.get_products, name='get_products'),
 
-    # Маршруты для работы с проданными продуктами
+app_name = 'api'  # Это устанавливает пространство имен для приложения
+
+urlpatterns = [
+    path('products/', views.get_products, name='get_products'),
     path('sold-products/', views.get_sold_products, name='get_sold_products'),
+    path('login/', views.loging_user, name='login'),
+    path('register/', views.register_user, name='register'),
 ]

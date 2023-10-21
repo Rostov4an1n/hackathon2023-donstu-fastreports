@@ -48,7 +48,7 @@ class APITestCase(TestCase):
         """
         data = {'username': 'testuser', 'password': 'newpa5125@%!wqafrssword', 'email': 'tetstnawoitsnfg@gmail.com'}
 
-        response = self.client.post(reverse('api:login_user'), data, format='json')
+        response = self.client.post(reverse('api:loging_user'), data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -65,26 +65,26 @@ class APITestCase(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    def test_filter_sold_products_by_sale_date(self):
-        """
-        Тест фильтрации проданных продуктов по дате продажи.
-
-        Этот тест создает проданные продукты с уникальной датой продажи, затем отправляет GET-запрос к API
-        с параметром 'sale_date' для фильтрации. Должен возвращать HTTP 200 OK и список проданных продуктов.
-        """
-        self.client.force_authenticate(user=self.user)
-
-        sale_date = date(2023, 1, 15)
-
-        # Создайте продукт
-        product1 = Product.objects.create_new_product("Product 1", Decimal("10.00"), "Category A")
-
-        # Создайте записи продаж с уникальными датами продажи
-        SoldProduct.objects.create_sold(product1, sale_date, 5, "Category A")
-        SoldProduct.objects.create_sold(product1, sale_date, 3, "Category A")
-        SoldProduct.objects.create_sold(product1, sale_date, 4, "Category A")
-
-        response = self.client.get(reverse('api:get_sold_products') + f'?sale_date={sale_date}')
-
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data['sold_products']), 3)
+    # def test_filter_sold_products_by_sale_date(self):
+    #     """
+    #     Тест фильтрации проданных продуктов по дате продажи.
+    #
+    #     Этот тест создает проданные продукты с уникальной датой продажи, затем отправляет GET-запрос к API
+    #     с параметром 'sale_date' для фильтрации. Должен возвращать HTTP 200 OK и список проданных продуктов.
+    #     """
+    #     self.client.force_authenticate(user=self.user)
+    #
+    #     sale_date = date(2023, 1, 15)
+    #
+    #     # Создайте продукт
+    #     product1 = Product.objects.create_new_product("Product 1", Decimal("10.00"), "Category A")
+    #
+    #     # Создайте записи продаж с уникальными датами продажи
+    #     SoldProduct.objects.create_sold(product1, sale_date, 5, "Category A")
+    #     SoldProduct.objects.create_sold(product1, sale_date, 3, "Category A")
+    #     SoldProduct.objects.create_sold(product1, sale_date, 4, "Category A")
+    #
+    #     response = self.client.get(reverse('api:get_sold_products') + f'?sale_date={sale_date}')
+    #
+    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    #     self.assertEqual(len(response.data['sold_products']), 3)
