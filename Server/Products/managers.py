@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from decimal import Decimal, InvalidOperation
-from datetime import date
+from datetime import date  # Импортируем date из модуля datetime
 
 
 class ProductManager(models.Manager):
@@ -11,11 +11,10 @@ class ProductManager(models.Manager):
 
         :param name: Название нового продукта.
         :param price: Цена нового продукта.
-        :param category: Категория нового продукта
+        :param category: Категория нового продукта.
         :return: Созданный объект продукта.
         :raises ValidationError: Если название пустое, цена меньше или равна нулю или формат цены недопустим.
         """
-
         if not name:
             raise ValidationError("Product name cannot be empty")
 
@@ -87,9 +86,9 @@ class SoldProductManager(models.Manager):
     def get_sold_products(self) -> models.QuerySet:
         """
         Получает список всех проданных продуктов.
+
         :return: QuerySet с объектами SoldProduct.
         """
-
         return self.all()
 
     def filter_by_category(self, category: str) -> models.QuerySet:
@@ -99,19 +98,18 @@ class SoldProductManager(models.Manager):
         :param category: Категория для фильтрации.
         :return: QuerySet с объектами SoldProduct, отфильтрованными по категории.
         """
-
         return self.filter(category=category)
 
-    def filter_by_sale_date(self, sale_date) -> models.QuerySet:
-        """
-        Фильтрует проданные продукты по дате продажи.
+    # def filter_by_sale_date(self, sale_date: date) -> models.QuerySet:
+    #     """
+    #     Фильтрует проданные продукты по дате продажи.
+    #
+    #     :param sale_date: Дата продажи для фильтрации.
+    #     :return: QuerySet с объектами SoldProduct, отфильтрованными по дате продажи.
+    #     """
+    #     return self.filter(sale_date=sale_date)
 
-        :param sale_date: Дата продажи для фильтрации.
-        :return: QuerySet с объектами SoldProduct, отфильтрованными по дате продажи.
-        """
-        return self.filter(sale_date=sale_date)
-
-    def filter_by_date_range(self, start_date, end_date) -> models.QuerySet:
+    def filter_by_date_range(self, start_date: date, end_date: date) -> models.QuerySet:
         """
         Фильтрует проданные продукты по диапазону дат.
 
@@ -119,7 +117,6 @@ class SoldProductManager(models.Manager):
         :param end_date: Конечная дата диапазона.
         :return: QuerySet с объектами SoldProduct, отфильтрованными по диапазону дат.
         """
-
         return self.filter(sale_date__range=[start_date, end_date])
 
     def create_sold(self, product, sale_date, quantity_sold, category):
@@ -132,7 +129,6 @@ class SoldProductManager(models.Manager):
         :param category: Категория проданного товара.
         :return: Созданный объект SoldProduct.
         """
-
         sales_amount = Decimal(product.price) * Decimal(quantity_sold)
         sold_product = self.create(product=product,
                                    sale_date=sale_date,
