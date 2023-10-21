@@ -11,7 +11,7 @@ export default function reglog() {
             <div className='flex justify-center items-center w-[380px] h-[60px] mt-[20px] rounded-[15px] bg-[#F4F4F4]'>
                 <input id="password" className='text-[20px] text-[#333333] text-center w-[350px] h-[30px] bg-transparent' type="text" placeholder="Enter your password"/>
             </div>
-            <Link href="/home">
+            <Link href="/">
                 <button className='submit'>Начнем</button>
             </Link>
         </div>
