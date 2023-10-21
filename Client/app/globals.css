@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+@import url('https://db.onlinewebfonts.com/c/a8d23046bc8d38ee78b38e95ec47f9e5?family=Franklin+Gothic+Medium');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     body {
+        font-family: "Franklin Gothic Medium";
+        font-weight: bold;
         @apply bg-[#F4F4F4];
     }
 }
