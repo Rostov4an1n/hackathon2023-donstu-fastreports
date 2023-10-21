@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from decimal import Decimal, InvalidOperation
-from django.utils import timezone
+from datetime import date
 
 
 class ProductManager(models.Manager):
@@ -102,7 +102,7 @@ class SoldProductManager(models.Manager):
 
         return self.filter(category=category)
 
-    def filter_by_sale_date(self, sale_date: timezone.date) -> models.QuerySet:
+    def filter_by_sale_date(self, sale_date) -> models.QuerySet:
         """
         Фильтрует проданные продукты по дате продажи.
 
@@ -111,7 +111,7 @@ class SoldProductManager(models.Manager):
         """
         return self.filter(sale_date=sale_date)
 
-    def filter_by_date_range(self, start_date: timezone.date, end_date: timezone.date) -> models.QuerySet:
+    def filter_by_date_range(self, start_date, end_date) -> models.QuerySet:
         """
         Фильтрует проданные продукты по диапазону дат.
 
