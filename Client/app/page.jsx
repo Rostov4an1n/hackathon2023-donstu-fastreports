@@ -1,18 +1,34 @@
 'use client';
 
-import React from 'react'; // Make sure to import React
-import { Bar, Line } from 'react-chartjs-2';
-import { optionsBar, dataBar } from './components/chartSales';
+import React from 'react';
+import { Line } from 'react-chartjs-2';
 import { optionsLine, dataLine } from './components/chartLine';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className='w-[588px] h-[304px] flex justify-center items-center'>
-        <Bar options={optionsBar} data={dataBar} />
+    <main className='flex flex-col h-screen w-full items-center'>
+      <div id='topContainer' className='flex flex-row h-[200px] w-[1540px] bg-red-600 mt-[69px] gap-x-[30px]'>
+        <div className='w-[430px] h-[200px] bg-blue-500'>
+
+        </div>
+        <div className='w-[620px] h-[200px] bg-blue-500'>
+
+        </div>
+        <div className='w-[430px] h-[200px] bg-blue-500'>
+
+        </div>
       </div>
-      <div className='w-[588px] h-[304px] flex justify-center items-center'>
-        <Line options={optionsLine} data={dataLine} />
+
+      <div id='middleContainer' className='flex flex-row h-[300px] w-[1540px] bg-red-600 my-[30px] gap-x-[30px]'>
+        <div className='w-[755px] h-[300px] bg-blue-500'>
+
+        </div>
+        <div className='w-[755px] h-[300px] bg-blue-500'>
+
+        </div>
+      </div>
+      <div id='bottomContainer' className='flex flex-row h-[280px] w-[1540px] bg-red-600 my-[30px]'>
+
       </div>
     </main>
   );

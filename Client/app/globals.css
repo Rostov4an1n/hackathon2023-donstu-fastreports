@@ -3,4 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply overflow-hidden bg-[#EEF1F8];
+    }
 }

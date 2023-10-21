@@ -9,6 +9,7 @@ import {
     Title,
     Tooltip,
     Legend,
+    Filler
   } from 'chart.js';
   
   ChartJS.register(
@@ -18,35 +19,19 @@ import {
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Filler
   );
   
   export const optionsLine = {
     responsive: true,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    stacked: false,
     plugins: {
+      legend: {
+        display: false,
+      },
       title: {
         display: true,
-        text: 'Chart.js Line Chart - Multi Axis',
-      },
-    },
-    scales: {
-      y: {
-        type: 'linear',
-        display: true,
-        position: 'left',
-      },
-      y1: {
-        type: 'linear',
-        display: true,
-        position: 'right',
-        grid: {
-          drawOnChartArea: false,
-        },
+        text: 'Chart.js Line Chart',
       },
     },
   };
@@ -57,18 +42,18 @@ import {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: labels.map(() => Math.floor(Math.random() * 1000)),
+        data: labels.map(() => Math.floor(Math.random() * 500)),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
+        tension: 0.4,
+        fill: true,
       },
       {
-        label: 'Dataset 2',
-        data: labels.map(() => Math.floor(Math.random() * 1000)),
+        data: labels.map(() => Math.floor(Math.random() * 500)),
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y1',
+        tension: 0.4,
+        fill: true,
       },
     ],
   };
