@@ -19,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+export const optionsBar = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -35,7 +35,7 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
+export const dataBar = {
   labels,
   datasets: [
     {
