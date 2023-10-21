@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Products'
 ]
 
 MIDDLEWARE = [
@@ -76,14 +77,10 @@ WSGI_APPLICATION = 'FastReportsServer.wsgi.application'
 
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'mydatabase',  # Название вашей базы данных MySQL
-       'USER': 'myuser',      # Пользователь MySQL
-       'PASSWORD': 'mypassword',  # Пароль пользователя MySQL
-       'HOST': '123.456.789.123',   # IP-адрес сервера MySQL
-       'PORT': '3306',        # Порт MySQL
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
