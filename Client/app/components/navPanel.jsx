@@ -1,4 +1,5 @@
 import { BsClock } from 'react-icons/bs';
+import Link from 'next/link';
 
 export default function NavPanel() {
     return (
@@ -17,6 +18,9 @@ export default function NavPanel() {
                         <button className='h-[40px] w-[115px] bg-green-500'>Творог</button>
                         <button className='h-[40px] w-[135px] bg-green-500'>Йогурты</button>
                         <button className='h-[40px] w-[110px] bg-green-500'>Сырки</button>
+                        <Link href='/regPage'>
+                            <button className='h-[40px] w-[110px] bg-green-500'>Регистрация</button>
+                        </Link>
                     </div>
                 </div>
                 <div className='w-[60px] h-[60px] bg-blue-500 rounded-full items-center flex justify-center'>
