@@ -2,14 +2,14 @@ import Link from 'next/link'
 
 export default function NavPanel() {
     return (
-        <nav className="flex flex-row justify-center items-center w-full h-[120px] bg-slate-300">
-            <div className='flex flex-row items-center space-x-[20px] w-auto h-auto'>
-                <Link href='/'>
-                    <button className='bg-purple-700 rounded-md p-3'>Main Page</button>
-                </Link>
-                <Link href='/TestPage'>
-                    <button className='bg-purple-700 rounded-md p-3'>Test Page</button>
-                </Link>
+        <nav className="flex justify-center items-center w-full h-[100px] bg-slate-300">
+            <div className='flex flex-row mx-[220px] w-full h-auto bg-slate-600'>
+                <div className=''>
+
+                </div>
+                <div className='w-[60px] h-[60px] bg-white rounded-[30px]'>
+
+                </div>
             </div>
         </nav>
     )
