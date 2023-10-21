@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-
+    body {
+        @apply overflow-hidden bg-[#EEF1F8];
+    }
 }
