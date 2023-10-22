@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 @authentication_classes([ApiKeyAuthentication, SessionAuthentication, BasicAuthentication])
 @api_view(['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 @cache_page(60 * 15)  # Кеширование на 15 минут
 def get_products(request):
     """
@@ -76,7 +76,7 @@ def get_products(request):
 
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 @cache_page(60 * 15)
 def get_sold_products(request):
     """
