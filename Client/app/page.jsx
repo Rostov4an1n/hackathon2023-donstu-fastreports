@@ -41,9 +41,22 @@ export default function Home() {
           </div>
 
         </div>
-        <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
-        <div className='w-full'>
 
+
+        <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
+        <div className='w-full h-auto flex '>
+            
+            {/* img */}
+          <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
+
+          </div>
+
+          {/* layer */}
+          <div className='h-auto'>
+            <h1 className='font-semibold text-[18px]'>Молочная продукция</h1>
+            <div className='w-full bg-black h-[1px] rounded-[10px]'></div>
+            <h1 className='font-semibold text-[18px]'>Молоко</h1>
+          </div>
         </div>
 
         </div>

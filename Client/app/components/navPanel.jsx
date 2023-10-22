@@ -14,9 +14,9 @@ export default function NavPanel() {
                     </div>
                     <div className='h-auto w-auto gap-x-[70px] flex flex-row'>
                         <button className='h-[40px] w-[70px] rounded-[27px] font-bold text-[14px]'>Сыр</button>
-                        <button className='h-[40px] w-[115px] rounded-[27px]font-bold text-[14px]'>Творог</button>
-                        <button className='h-[40px] w-[135px] rounded-[27px]font-bold text-[14px]'>Йогурты</button>
-                        <button className='h-[40px] w-[110px] rounded-[27px]font-bold text-[14px]'>Сырки</button>
+                        <button className='h-[40px] w-[115px] rounded-[27px] font-bold text-[14px]'>Творог</button>
+                        <button className='h-[40px] w-[135px] rounded-[27px] font-bold text-[14px]'>Йогурты</button>
+                        <button className='h-[40px] w-[110px] rounded-[27px] font-bold text-[14px]'>Сырки</button>
                     </div>
                 </div>
                 <div className='w-[60px] h-[60px] items-center flex justify-center'>
