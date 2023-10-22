@@ -10,7 +10,6 @@ import {
     ArcElement,
     borderWidth,
     Segment,
-    Math
 } from 'chart.js';
 
 ChartJS.register(
@@ -36,13 +35,12 @@ export const options2 = {
 };
 
 
-
+const labels = ['Продажа', 'Закупка'];
 
 export const data2 = {
-
-    labels: ['Продажа', 'Закупка'],
+    labels,
     datasets: [{
-        data: [20, 50], // Ваши данные здесь
+        data: [110, 70], // Ваши данные здесь
         backgroundColor: [
             '#17C969FF',
             '#FF5050FF',

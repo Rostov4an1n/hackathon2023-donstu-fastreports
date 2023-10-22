@@ -1,66 +1,31 @@
 'use client';
 import React from 'react';
-import { Line, Doughnut } from 'react-chartjs-2';
-import { optionsLine } from './components/chartLine';
+import { Line, Doughnut, Chart } from 'react-chartjs-2';
+import { optionsLine, dataLine, dataValues } from './components/chartLine';
 import { optionsLine2, dataLine2 } from './components/chartLine2'
 import {data, options} from './components/chartPie';
-import {data2, options2} from './components/ChartPie2';
-import { useQuery } from 'react-query';
+import {data2, options2} from './components/chartPie2';
 import Image from 'next/image';
-
+import{data4, options4} from './components/mainChart';
+import { useQuery } from 'react-query';
 
 export default function Home() {
-  const { isLoading, error, data: fetchedData } = useQuery(
-     'repoData',
-     () =>
-       fetch(
-         'https://localhost:8888/sold-products/'
-       ).then((response) => response.json())
-   );
+  // const { isLoading, error, data: fetchedData } = useQuery(
+  //   'repoData',
+  //   () =>
+  //     fetch(
+  //       'https://localhost:8888/sold-products/'
+  //     ).then((response) => response.json())
+  // );
 
-   if (isLoading) return <p>Загрузка...</p>;
+  // if (isLoading) return <p>Загрузка...</p>;
 
-   if (error) return <p>Ошибка: {error.message}</p>;
-
-  // Здесь вы можете обработать полученные данные и использовать их для заполнения datasets.
-  const labels = ['Jan', 'Fab', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const dataLinelabels = fetchedData.soldproducts;
-  const dataLinelabels2 = fetchedData.buyproducts;
-
-  const dataLine = {
-      labels, // Подставляем метки для оси x
-      datasets: [{
-              label: false, // Название Dataset 1
-              data: dataLinelabels, // Данные для Dataset 1
-              backgroundColor: '#FF6666FF', // Цвет заливки графика (красный)
-              borderColor: "#FF6666FF", // Цвет границы графика (красный)
-              yAxisID: 'y', // Использовать ось y
-              fill: {
-                  target: 'origin', // Заполнить область под графиком
-                  above: '#FF666644', // Цвет заливки выше графика (красный с прозрачностью)
-                  below: '#F9000000', // Цвет заливки ниже графика (красный с прозрачностью)
-              },
-              borderDashOffset: 3,
-          },
-          {
-              label: false, // Название Dataset 2
-              data: dataLinelabels2, // Данные для Dataset 2
-              backgroundColor: '#42BD53FF', // Цвет заливки графика (зеленый)
-              borderColor: "#42BD53FF", // Цвет границы графика (зеленый)
-              yAxisID: 'y1', // Использовать ось y1
-              fill: {
-                  target: 'origin', // Заполнить область под графиком
-                  above: '#42BD533D', // Цвет заливки выше графика (зеленый с прозрачностью)
-                  below: '#F9000000' // Цвет заливки ниже графика (красный с прозрачностью)
-              }
-          },
-      ],
-  }
+  // if (error) return <p>Ошибка: {error.message}</p>;
 
   return (
     <main className='flex flex-col h-screen w-screen items-center'>
       <div id='topContainer' className='flex flex-row h-[200px] w-[1540px] mt-[69px] gap-x-[30px]'>
-        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
+        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[30px] items-center'>
           <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Кол-во</h1></div>
           <div className='flex items-center w-auto ml-3'>
 
@@ -70,7 +35,7 @@ export default function Home() {
                 <p className='text-black font-bold text-[13px]'>Закуплено</p>
               </div>
               <div className='flex justify-center'>
-                <h2 className='font-bold text-[26px]'>250</h2>
+                <h2 className='font-bold text-[26px]'>417</h2>
               </div>
             </div>
 
@@ -80,7 +45,7 @@ export default function Home() {
                 <p className='text-black font-bold text-[13px]'>Реализовано</p>
               </div>
               <div className='flex justify-center ml-5'>
-                <h2 className='font-bold text-[26px]'>250</h2>
+                <h2 className='font-bold text-[26px]'>323</h2>
               </div>
             </div>
           </div>
@@ -92,7 +57,7 @@ export default function Home() {
         </div>
 
 
-        <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
+        <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[30px]'>
           <div className='w-full h-auto '>
             <div className='w-full h-auto flex mt-10 ml-[90px]'>
                 
@@ -119,8 +84,8 @@ export default function Home() {
                 <h1 className='font-bold text-[18px] mr-16 ml-auto'>70%</h1>
               </div>
               <div className='flex justify-center mt-2'>
-                <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
-                  <div className='bg-[#8E34FF] bar shadow-md h-full rounded-[10px]'></div>
+                <div className='bg-white shadow-md h-[10px] w-[500px] rounded-[10px]'>
+                  <div className='bg-[#42BD53FF] shadow-md h-full rounded-[10px] w-[350px]'></div>
                 </div>
               </div>
             </div>
@@ -128,7 +93,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
+        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[30px] items-center'>
         <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Цена</h1></div>
           <div className='flex items-center w-auto ml-3'>
 
@@ -138,17 +103,17 @@ export default function Home() {
                 <p className='text-black font-bold text-[13px]'>Закупка</p>
               </div>
               <div className='flex justify-center'>
-                <h2 className='font-bold text-[26px]'>250</h2>
+                <h2 className='font-bold text-[26px]'>70</h2>
               </div>
             </div>
 
             <div className='h-auto'>
               <div className="flex items-center ml-6">
                 <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
-                <p className='text-black font-bold text-[13px]'>Продажа</p>
+                <p className='text-black font-bold text-[13px]'>Реализация</p>
               </div>
               <div className='flex justify-center ml-5'>
-                <h2 className='font-bold text-[26px]'>250</h2>
+                <h2 className='font-bold text-[26px]'>110</h2>
               </div>
             </div>
           </div>
@@ -163,7 +128,7 @@ export default function Home() {
       <div id='middleContainer' className='flex flex-row h-[300px] w-[1540px] my-[30px] justify-center gap-x-[30px]'>
         <div className='w-auto h-[300px]'>
 
-          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
+          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[30px] bg-white px-[30px] shadow-md'>
             
             <h4 className='font-bold text-[20px] ml-6'>Сводка закупок/реализации</h4>
             
@@ -190,7 +155,7 @@ export default function Home() {
 
 
         <div className='w-auto h-[300px]'>
-          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
+          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[30px] bg-white px-[30px] shadow-md'>
            
            <h4 className='font-bold text-[20px] ml-6'>Стоимость закупки/реализации</h4>
             
@@ -204,7 +169,7 @@ export default function Home() {
 
               <div className="flex items-center ml-6">
                 <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
-                <p className='text-[#989898] text-[12px]'>Реализации</p>
+                <p className='text-[#989898] text-[12px]'>Реализация</p>
               </div>
             </div>
 
@@ -216,8 +181,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div id='bottomContainer' className='flex flex-row h-[280px] w-[1540px] '>
-
+      <div id='bottomContainer' className='flex flex-col justify-center h-auto w-[800px] px-10 py-6 bg-white shadow-md rounded-[30px]'>
+      <h4 className='font-bold text-[20px]'>Спрос</h4>
+        <Chart options={options4} data={data4}/>
       </div>
     </main>
   );

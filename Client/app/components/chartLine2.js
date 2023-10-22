@@ -57,16 +57,18 @@ export const optionsLine2 = { // Настройки для графика Line C
     },
 };
 
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; // Метки для оси x
+    const labels = ['Янв', 'Фев', 'Март', 'Май', 'Июнь', 'Июль', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+    // Закупка
+    const dataLinelabels = [70, 60, 75, 65, 70, 78, 75, 50, 52, 73, 68, 60]; 
+    // Реализация
+    const dataLinelabels2 = [135, 124, 127, 138, 132, 128, 139, 125, 130, 133, 140, 136];
 
-const datalabels = [20, 18, 16, 13, 10, 9, 12, 3, 1, 20, 18, 16]; // Данные для Dataset 1
-const datalabels2 = [29, 27, 25, 22, 19, 18, 21, 22, 1, 29, 27, 25]; // Данные для Dataset 2
 
 export const dataLine2 = {
     labels, // Подставляем метки для оси x
     datasets: [{
             label: false, // Название Dataset 1
-            data: datalabels, // Данные для Dataset 1
+            data: dataLinelabels, // Данные для Dataset 1
             backgroundColor: '#FF6666FF', // Цвет заливки графика (красный)
             borderColor: "#FF6666FF", // Цвет границы графика (красный)
             yAxisID: 'y', // Использовать ось y
@@ -79,7 +81,7 @@ export const dataLine2 = {
         },
         {
             label: false, // Название Dataset 2
-            data: datalabels2, // Данные для Dataset 2
+            data: dataLinelabels2, // Данные для Dataset 2
             backgroundColor: '#42BD53FF', // Цвет заливки графика (зеленый)
             borderColor: "#42BD53FF", // Цвет границы графика (зеленый)
             yAxisID: 'y1', // Использовать ось y1

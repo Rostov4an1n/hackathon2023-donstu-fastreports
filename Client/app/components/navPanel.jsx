@@ -25,10 +25,10 @@ export default function NavPanel() {
                         <button className='h-[40px] w-[110px] rounded-[27px] font-bold text-[18px] hover:shadow-md hover:shadow-[#efdfff] transition-all duration-300'>Сырки</button>
                     </div>
                 </div>
-                <select id="countries" class="bg-gray-50 shadow-md text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5 my-[10px]">
-                    <option selected>Последний месяц</option>
-                    <option value="US">Последние 6 месяцев</option>
-                    <option value="CA">Последний год</option>
+                <select id="countries" className="bg-gray-50 shadow-md text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5 my-[10px]">
+                    <option>Последний месяц</option>
+                    <option>Последние 6 месяцев</option>
+                    <option>Последний год</option>
                 </select>
             </div>
         </nav>

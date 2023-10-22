@@ -1,5 +1,5 @@
 import {
-    Chart as ChartJS, // Импортируем необходимые компоненты и модули из библиотеки Chart.js
+    Chart as ChartJS,
     CategoryScale,
     LinearScale,
     PointElement,
@@ -8,9 +8,6 @@ import {
     Tooltip,
     Filler,
     ArcElement,
-    borderWidth,
-    Segment,
-    Math
 } from 'chart.js';
 
 ChartJS.register(
@@ -32,22 +29,21 @@ export const options = {
             position: 'right',
         },
     },
-    cutout: '65%', // Устанавливаем вырез в центре диаграммы
+    cutout: '65%',
 };
 
-
-
+export const labels = ['Реализовано', 'Закуплено']; // Экспортируем labels
 
 export const data = {
-
-    labels: ['Реализовано', 'Закуплено'],
+    labels: labels,
     datasets: [{
-        data: [30, 50], // Ваши данные здесь
+        data: [323, 417],
         backgroundColor: [
             '#17C969FF',
             '#FF5050FF',
         ],
         borderRadius: 50,
-    }, ],
-
+    }],
 };
+
+export const dataValues = data.datasets[0].data; // Экспортируем значения из data
