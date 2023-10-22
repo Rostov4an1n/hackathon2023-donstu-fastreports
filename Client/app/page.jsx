@@ -44,22 +44,30 @@ export default function Home() {
 
 
         <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
-        <div className='w-full h-auto flex '>
-            
-            {/* img */}
-          <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
+          <div className='w-full h-auto '>
+            <div className='w-full h-auto flex mt-10 ml-[90px]'>
+                
+                {/* img */}
+              <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
 
-          </div>
+              </div>
 
-          {/* layer */}
-          <div className='h-auto'>
-            <h1 className='font-semibold text-[18px]'>Молочная продукция</h1>
-            <div className='w-full bg-black h-[1px] rounded-[10px]'></div>
-            <h1 className='font-semibold text-[18px]'>Молоко</h1>
+              {/* layer */}
+              <div className='h-auto ml-[10px]'>
+                <h1 className='font-semibold text-[18px]'>Молочная продукция</h1>
+                <div className='w-full bg-black h-[1px] rounded-[10px]'></div>
+                <h1 className='font-semibold text-[18px]'>Молоко</h1>
+              </div>
+
+            </div>
+            <div className='flex justify-center mt-12'>
+              <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
+                <div className='bg-[#8E34FF] shadow-md w-[70%] h-full rounded-[10px]'></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        </div>
         <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
         <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Цена</h1></div>
           <div className='flex items-center w-auto ml-3'>
