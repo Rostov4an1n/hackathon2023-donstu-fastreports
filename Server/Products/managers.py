@@ -5,10 +5,11 @@ from datetime import date  # Импортируем date из модуля datet
 
 
 class ProductManager(models.Manager):
-    def create_new_product(self, name: str, price: Decimal, category: str) -> models.Model:
+    def create_new_product(self, name: str, price: Decimal, category: str, product_count) -> models.Model:
         """
         Создает новый продукт и сохраняет его в базе данных.
 
+        :param product_count: Кол-во закупленных продуктов
         :param name: Название нового продукта.
         :param price: Цена нового продукта.
         :param category: Категория нового продукта.
@@ -25,7 +26,7 @@ class ProductManager(models.Manager):
         except (ValueError, InvalidOperation):
             raise ValidationError("Invalid price format")
 
-        product = self.create(name=name, price=price, category=category)
+        product = self.create(name=name, price=price, category=category, product_count=product_count)
         return product
 
     def delete_product(self, product_id: int) -> bool:
@@ -100,15 +101,6 @@ class SoldProductManager(models.Manager):
         """
         return self.filter(category=category)
 
-    # def filter_by_sale_date(self, sale_date: date) -> models.QuerySet:
-    #     """
-    #     Фильтрует проданные продукты по дате продажи.
-    #
-    #     :param sale_date: Дата продажи для фильтрации.
-    #     :return: QuerySet с объектами SoldProduct, отфильтрованными по дате продажи.
-    #     """
-    #     return self.filter(sale_date=sale_date)
-
     def filter_by_date_range(self, start_date: date, end_date: date) -> models.QuerySet:
         """
         Фильтрует проданные продукты по диапазону дат.
@@ -129,8 +121,15 @@ class SoldProductManager(models.Manager):
         :param category: Категория проданного товара.
         :return: Созданный объект SoldProduct.
         """
-        sales_amount = Decimal(product.price) * Decimal(quantity_sold)
-        sold_product = self.create(product=product,
+        from .models import Product
+        try:
+            existing_product = Product.objects.get(name=product.name)
+            category = existing_product.category
+        except ObjectDoesNotExist:
+            raise ObjectDoesNotExist("Отсутствие продукта")  # Выбросить исключение "Отсутствие продукта"
+
+        sales_amount = Decimal(existing_product.price) * Decimal(quantity_sold)
+        sold_product = self.create(product=existing_product,
                                    sale_date=sale_date,
                                    quantity_sold=quantity_sold,
                                    category=category,

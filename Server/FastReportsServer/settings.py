@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'Products',
     'api',
     'rest_framework',
+    'rest_framework.authtoken',
     'user',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,16 @@ CORS_ALLOWED_ORIGINS = [
 
 
 ROOT_URLCONF = 'FastReportsServer.urls'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        # ...
+    ],
+    # ...
+}
+
 
 TEMPLATES = [
     {
@@ -95,15 +106,10 @@ WSGI_APPLICATION = 'FastReportsServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydatabase',          # Имя вашей базы данных
-        'USER': 'yourusername',       # Ваше имя пользователя MySQL
-        'PASSWORD': r'Pushistic_Is_The_Best_Kowala2801',   # Ваш пароль MySQL
-        'HOST': 'localhost',          # Хост, на котором работает MySQL
-        'PORT': '3306',               # Порт MySQL (по умолчанию 3306)
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 
 # Password validation

@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 @cache_page(60 * 15)  # Кеширование на 15 минут
 def get_products(request):
     """
@@ -70,7 +70,7 @@ def get_products(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 @cache_page(60 * 15)
 def get_sold_products(request):
     """
@@ -86,10 +86,13 @@ def get_sold_products(request):
     category: Optional[str] = request.query_params.get('category')
     sale_date: Optional[str] = request.query_params.get('sale_date')
     date_range: Optional[str] = request.query_params.get('date_range')
+    product_id: Optional[str] = request.query_params.get('product')
 
     # Создаем объект QuerySet для фильтрации проданных продуктов
     sold_products = SoldProduct.objects
 
+    if product_id:
+        sold_products = sold_products.filter(product_id)
     # Применяем фильтрацию по категории
     if category:
         sold_products = sold_products.filter(category=category)

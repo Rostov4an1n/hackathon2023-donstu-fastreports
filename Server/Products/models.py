@@ -22,6 +22,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=100, unique=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    product_count = models.IntegerField(default=0)
     category = models.CharField(max_length=150, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -45,10 +46,10 @@ class SoldProduct(models.Model):
     - save(self, *args, **kwargs): Переопределяет метод сохранения для автоматического вычисления суммы продажи.
     """
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    sale_date = models.DateField(auto_now_add=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='sold_products', null=True, blank=True)
+    sale_date = models.DateTimeField(auto_now_add=True)
     quantity_sold = models.PositiveIntegerField()
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=50, blank=True, default="Unknown")
     sales_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     objects = SoldProductManager()
 
