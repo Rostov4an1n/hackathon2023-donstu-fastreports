@@ -1,0 +1,63 @@
+2023-10-21 19:07:41,677 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\api\urls.py changed, reloading.
+2023-10-21 19:11:12,085 [WARNING] [django.request]: Not Found: /register/
+2023-10-21 19:11:31,924 [WARNING] [django.request]: Not Found: /register/
+2023-10-21 19:11:42,468 [WARNING] [django.request]: Not Found: /register
+2023-10-21 19:13:08,508 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\urls.py changed, reloading.
+2023-10-21 19:13:40,932 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\api\urls.py changed, reloading.
+2023-10-21 19:13:45,322 [WARNING] [django.request]: Not Found: /register/
+2023-10-21 19:14:07,237 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\api\serializers.py changed, reloading.
+2023-10-21 19:14:47,883 [WARNING] [django.request]: Not Found: /register/
+2023-10-21 19:14:51,503 [WARNING] [django.request]: Not Found: /register
+2023-10-21 19:17:02,004 [ERROR] [django.request]: Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/api/register/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2023-10-21 19:17:05,834 [INFO] [api.views]: «арегистрирован новый пользователь с именем testusernamed.
+2023-10-21 20:59:48,115 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\Products\managers.py changed, reloading.
+2023-10-22 02:19:14,317 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\settings.py changed, reloading.
+2023-10-22 02:19:35,352 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\settings.py changed, reloading.
+2023-10-22 02:19:43,628 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\settings.py changed, reloading.
+2023-10-22 02:22:40,595 [ERROR] [django.request]: Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SCB\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\middleware\common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8888/api/register/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2023-10-22 02:22:57,032 [INFO] [api.views]: «арегистрирован новый пользователь с именем scb.
+2023-10-22 02:33:18,410 [ERROR] [api.views]: ќшибка при регистрации нового пользовател€: {'username': [ErrorDetail(string='user with this username already exists.', code='unique')], 'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+2023-10-22 02:33:18,411 [WARNING] [django.request]: Bad Request: /api/register/
+2023-10-22 09:01:23,323 [WARNING] [django.request]: Forbidden: /api/sold-products/
+2023-10-22 09:04:07,727 [WARNING] [django.request]: Forbidden: /api/sold-products/
+2023-10-22 09:07:56,726 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\settings.py changed, reloading.
+2023-10-22 09:08:38,639 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\settings.py changed, reloading.
+2023-10-22 09:11:09,876 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\FastReportsServer\settings.py changed, reloading.
+2023-10-22 09:12:35,062 [INFO] [api.views]: «арегистрирован новый пользователь с именем testuser.
+2023-10-22 09:23:34,044 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\Products\models.py changed, reloading.
+2023-10-22 10:16:22,891 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\Products\models.py changed, reloading.
+2023-10-22 10:26:52,591 [WARNING] [django.request]: Not Found: /products/
+2023-10-22 10:26:53,618 [WARNING] [django.request]: Not Found: /products/
+2023-10-22 10:27:04,785 [WARNING] [django.request]: Not Found: /products/
+2023-10-22 10:27:06,824 [WARNING] [django.request]: Not Found: /product/
+2023-10-22 10:27:25,463 [WARNING] [django.request]: Not Found: /product/
+2023-10-22 10:27:27,518 [WARNING] [django.request]: Not Found: /api/product/
+2023-10-22 10:27:40,970 [WARNING] [django.request]: Not Found: /api/product/
+2023-10-22 10:37:21,767 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\api\serializers.py changed, reloading.
+2023-10-22 11:06:40,875 [INFO] [api.views]: «арегистрирован новый пользователь с именем testusername.

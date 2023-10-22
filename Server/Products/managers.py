@@ -1,26 +1,35 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from decimal import Decimal, InvalidOperation
+from datetime import date  # Импортируем date из модуля datetime
 
 
 class ProductManager(models.Manager):
-    def create_new_product(self, name, price):
+    def create_new_product(self, name: str, price: Decimal, category: str, product_count) -> models.Model:
         """
         Создает новый продукт и сохраняет его в базе данных.
 
+        :param product_count: Кол-во закупленных продуктов
         :param name: Название нового продукта.
         :param price: Цена нового продукта.
+        :param category: Категория нового продукта.
         :return: Созданный объект продукта.
-        :raises ValidationError: Если название пустое или цена меньше или равна нулю.
+        :raises ValidationError: Если название пустое, цена меньше или равна нулю или формат цены недопустим.
         """
         if not name:
             raise ValidationError("Product name cannot be empty")
-        if price <= 0:
-            raise ValidationError("Price must be greater than zero")
 
-        product = self.create(name=name, price=price)
+        try:
+            price = Decimal(price)
+            if price <= 0:
+                raise ValidationError("Price must be greater than zero")
+        except (ValueError, InvalidOperation):
+            raise ValidationError("Invalid price format")
+
+        product = self.create(name=name, price=price, category=category, product_count=product_count)
         return product
 
-    def delete_product(self, product_id):
+    def delete_product(self, product_id: int) -> bool:
         """
         Удаляет продукт с указанным идентификатором из базы данных.
 
@@ -34,7 +43,7 @@ class ProductManager(models.Manager):
         except ObjectDoesNotExist:
             return False
 
-    def get_top_selling_products(self, limit=10):
+    def get_top_selling_products(self, limit: int = 10) -> models.QuerySet:
         """
         Возвращает топ продаваемых продуктов с ограничением на количество.
 
@@ -43,7 +52,7 @@ class ProductManager(models.Manager):
         """
         return self.order_by('-sales_count')[:limit]
 
-    def calculate_total_price(self):
+    def calculate_total_price(self) -> Decimal:
         """
         Вычисляет общую стоимость продуктов в базе данных.
 
@@ -52,7 +61,7 @@ class ProductManager(models.Manager):
         total_price = self.aggregate(total_price=models.Sum(models.F('price') * models.F('quantity')))
         return total_price['total_price']
 
-    def update_product_price(self, product_id, new_price):
+    def update_product_price(self, product_id: int, new_price: Decimal) -> models.Model:
         """
         Обновляет цену продукта с указанным идентификатором.
 
@@ -72,3 +81,57 @@ class ProductManager(models.Manager):
             return product
         except ObjectDoesNotExist:
             raise ValidationError("Product not found")
+
+
+class SoldProductManager(models.Manager):
+    def get_sold_products(self) -> models.QuerySet:
+        """
+        Получает список всех проданных продуктов.
+
+        :return: QuerySet с объектами SoldProduct.
+        """
+        return self.all()
+
+    def filter_by_category(self, category: str) -> models.QuerySet:
+        """
+        Фильтрует проданные продукты по категории.
+
+        :param category: Категория для фильтрации.
+        :return: QuerySet с объектами SoldProduct, отфильтрованными по категории.
+        """
+        return self.filter(category=category)
+
+    def filter_by_date_range(self, start_date: date, end_date: date) -> models.QuerySet:
+        """
+        Фильтрует проданные продукты по диапазону дат.
+
+        :param start_date: Начальная дата диапазона.
+        :param end_date: Конечная дата диапазона.
+        :return: QuerySet с объектами SoldProduct, отфильтрованными по диапазону дат.
+        """
+        return self.filter(sale_date__range=[start_date, end_date])
+
+    def create_sold(self, product, sale_date, quantity_sold, category):
+        """
+        Создает новую запись о продаже продукта и сохраняет её в базе данных.
+
+        :param product: Продукт, проданный в рамках записи.
+        :param sale_date: Дата продажи.
+        :param quantity_sold: Количество проданных товаров.
+        :param category: Категория проданного товара.
+        :return: Созданный объект SoldProduct.
+        """
+        from .models import Product
+        try:
+            existing_product = Product.objects.get(name=product.name)
+            category = existing_product.category
+        except ObjectDoesNotExist:
+            raise ObjectDoesNotExist("Отсутствие продукта")  # Выбросить исключение "Отсутствие продукта"
+
+        sales_amount = Decimal(existing_product.price) * Decimal(quantity_sold)
+        sold_product = self.create(product=existing_product,
+                                   sale_date=sale_date,
+                                   quantity_sold=quantity_sold,
+                                   category=category,
+                                   sales_amount=sales_amount)
+        return sold_product
