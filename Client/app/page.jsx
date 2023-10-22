@@ -1,113 +1,164 @@
-import Image from 'next/image'
+'use client';
+import React from 'react';
+import { Line, Doughnut } from 'react-chartjs-2';
+import { optionsLine, dataLine } from './components/chartLine';
+import { optionsLine2, dataLine2 } from './components/chartLine2'
+import {data, options} from './components/chartPie';
+import {data2, options2} from './components/ChartPie2';
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='flex flex-col h-screen w-screen items-center'>
+      <div id='topContainer' className='flex flex-row h-[200px] w-[1540px] mt-[69px] gap-x-[30px]'>
+        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
+          <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Кол-во</h1></div>
+          <div className='flex items-center w-auto ml-3'>
+
+            <div className='h-auto'>
+              <div className="flex items-center ml-1">
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Закуплено</p>
+              </div>
+              <div className='flex justify-center'>
+                <h2 className='font-bold text-[26px]'>250</h2>
+              </div>
+            </div>
+
+            <div className='h-auto'>
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Реализовано</p>
+              </div>
+              <div className='flex justify-center ml-5'>
+                <h2 className='font-bold text-[26px]'>250</h2>
+              </div>
+            </div>
+          </div>
+          
+          <div className='w-[130px] h-[130px] ml-3'>
+            <Doughnut data={data} options={options} />
+          </div>
+
+        </div>
+
+
+        <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
+          <div className='w-full h-auto '>
+            <div className='w-full h-auto flex mt-10 ml-[90px]'>
+                
+                {/* img */}
+              <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
+
+              </div>
+
+              {/* layer */}
+              <div className='h-auto ml-[10px]'>
+                <h1 className='font-semibold text-[18px]'>Молочная продукция</h1>
+                <div className='w-full bg-black h-[1px] rounded-[10px]'></div>
+                <h1 className='font-semibold text-[18px]'>Молоко</h1>
+              </div>
+
+            </div>
+            <div className='flex justify-center mt-12'>
+              <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
+                <div className='bg-[#8E34FF] shadow-md w-[70%] h-full rounded-[10px]'></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
+        <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Цена</h1></div>
+          <div className='flex items-center w-auto ml-3'>
+
+            <div className='h-auto'>
+              <div className="flex items-center ml-1">
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Закупка</p>
+              </div>
+              <div className='flex justify-center'>
+                <h2 className='font-bold text-[26px]'>250</h2>
+              </div>
+            </div>
+
+            <div className='h-auto'>
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Продажа</p>
+              </div>
+              <div className='flex justify-center ml-5'>
+                <h2 className='font-bold text-[26px]'>250</h2>
+              </div>
+            </div>
+          </div>
+          
+          <div className='w-[130px] h-[130px] ml-8'>
+            <Doughnut data={data2} options={options2} />
+          </div>
+
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div id='middleContainer' className='flex flex-row h-[300px] w-[1540px] my-[30px] justify-center gap-x-[30px]'>
+        <div className='w-auto h-[300px]'>
+
+          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
+            
+            <h4 className='font-bold text-[20px] ml-6'>Сводка закупок/реализации</h4>
+            
+            <div className='flex items-center ml-6'>
+              <div className="flex items-center ml-1">
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Закуплено</p>
+              </div>
+
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Реализовано</p>
+              </div>
+            </div>
+
+
+
+            <div className='w-full h-[210px] ml-10'>
+              <Line options={optionsLine} data={dataLine}/>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div className='w-auto h-[300px]'>
+          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
+           
+           <h4 className='font-bold text-[20px] ml-6'>Стоимость закупки/реализации</h4>
+            
+            <div className='flex items-center ml-6'>
+              
+              <div className="flex items-center ml-1">
+
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Закупка</p>
+              </div>
+
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Реализации</p>
+              </div>
+            </div>
+
+
+            <div className='w-full h-[210px] ml-10'>
+              <Line options={optionsLine2} data={dataLine2}/>
+            </div>
+
+          </div>
+        </div>
       </div>
+      <div id='bottomContainer' className='flex flex-row h-[280px] w-[1540px] '>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
       </div>
     </main>
-  )
+  );
 }
