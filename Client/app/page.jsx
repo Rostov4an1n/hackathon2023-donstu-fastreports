@@ -1,167 +1,212 @@
 'use client';
 import React from 'react';
 import { Line, Doughnut } from 'react-chartjs-2';
-import { optionsLine, dataLine } from './components/chartLine';
+import { optionsLine } from './components/chartLine';
 import { optionsLine2, dataLine2 } from './components/chartLine2'
 import {data, options} from './components/chartPie';
 import {data2, options2} from './components/ChartPie2';
-import NavPanel from './components/navPanel';
+import { useQuery } from 'react-query';
 
 
 export default function Home() {
+  // const { isLoading, error, data: fetchedData } = useQuery(
+  //   'repoData',
+  //   () =>
+  //     fetch(
+  //       'https://localhost:8888/sold-products/'
+  //     ).then((response) => response.json())
+  // );
+
+  // if (isLoading) return <p>Загрузка...</p>;
+
+  // if (error) return <p>Ошибка: {error.message}</p>;
+
+  // Здесь вы можете обработать полученные данные и использовать их для заполнения datasets.
+  const labels = ['Jan', 'Fab', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const dataLinelabels = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+  const dataLinelabels2 = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+
+  const dataLine = {
+      labels, // Подставляем метки для оси x
+      datasets: [{
+              label: false, // Название Dataset 1
+              data: dataLinelabels, // Данные для Dataset 1
+              backgroundColor: '#FF6666FF', // Цвет заливки графика (красный)
+              borderColor: "#FF6666FF", // Цвет границы графика (красный)
+              yAxisID: 'y', // Использовать ось y
+              fill: {
+                  target: 'origin', // Заполнить область под графиком
+                  above: '#FF666644', // Цвет заливки выше графика (красный с прозрачностью)
+                  below: '#F9000000', // Цвет заливки ниже графика (красный с прозрачностью)
+              },
+              borderDashOffset: 3,
+          },
+          {
+              label: false, // Название Dataset 2
+              data: dataLinelabels2, // Данные для Dataset 2
+              backgroundColor: '#42BD53FF', // Цвет заливки графика (зеленый)
+              borderColor: "#42BD53FF", // Цвет границы графика (зеленый)
+              yAxisID: 'y1', // Использовать ось y1
+              fill: {
+                  target: 'origin', // Заполнить область под графиком
+                  above: '#42BD533D', // Цвет заливки выше графика (зеленый с прозрачностью)
+                  below: '#F9000000' // Цвет заливки ниже графика (красный с прозрачностью)
+              }
+          },
+      ],
+  }
+
   return (
-    <NavPanel>
-      <main className='flex flex-col h-screen w-screen items-center'>
-        <div id='topContainer' className='flex flex-row h-[200px] w-[1540px] mt-[69px] gap-x-[30px]'>
-          <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
-            <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Кол-во</h1></div>
-            <div className='flex items-center w-auto ml-3'>
+    <main className='flex flex-col h-screen w-screen items-center'>
+      <div id='topContainer' className='flex flex-row h-[200px] w-[1540px] mt-[69px] gap-x-[30px]'>
+        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
+          <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Кол-во</h1></div>
+          <div className='flex items-center w-auto ml-3'>
 
-              <div className='h-auto'>
-                <div className="flex items-center ml-1">
-                  <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
-                  <p className='text-black font-bold text-[13px]'>Закуплено</p>
-                </div>
-                <div className='flex justify-center'>
-                  <h2 className='font-bold text-[26px]'>250</h2>
-                </div>
+            <div className='h-auto'>
+              <div className="flex items-center ml-1">
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Закуплено</p>
               </div>
-
-              <div className='h-auto'>
-                <div className="flex items-center ml-6">
-                  <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
-                  <p className='text-black font-bold text-[13px]'>Реализовано</p>
-                </div>
-                <div className='flex justify-center ml-5'>
-                  <h2 className='font-bold text-[26px]'>250</h2>
-                </div>
+              <div className='flex justify-center'>
+                <h2 className='font-bold text-[26px]'>250</h2>
               </div>
             </div>
-            
-            <div className='w-[130px] h-[130px] ml-3'>
-              <Doughnut data={data} options={options} />
-            </div>
 
-          </div>
-
-
-          <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
-            <div className='w-full h-auto '>
-              <div className='w-full h-auto flex mt-10 ml-[90px]'>
-                  
-                  {/* img */}
-                <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
-
-                </div>
-
-                {/* layer */}
-                <div className='h-auto ml-[10px]'>
-                  <h1 className='font-semibold text-[18px]'>Молочная продукция</h1>
-                  <div className='w-full bg-black h-[1px] rounded-[10px]'></div>
-                  <h1 className='font-semibold text-[18px]'>Молоко</h1>
-                </div>
-
+            <div className='h-auto'>
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Реализовано</p>
               </div>
-              <div className='flex justify-center mt-12'>
-                <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
-                  <div className='bg-[#8E34FF] shadow-md w-[70%] h-full rounded-[10px]'></div>
-                </div>
+              <div className='flex justify-center ml-5'>
+                <h2 className='font-bold text-[26px]'>250</h2>
               </div>
             </div>
           </div>
-
-          <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
-          <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Цена</h1></div>
-            <div className='flex items-center w-auto ml-3'>
-
-              <div className='h-auto'>
-                <div className="flex items-center ml-1">
-                  <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
-                  <p className='text-black font-bold text-[13px]'>Закупка</p>
-                </div>
-                <div className='flex justify-center'>
-                  <h2 className='font-bold text-[26px]'>250</h2>
-                </div>
-              </div>
-
-              <div className='h-auto'>
-                <div className="flex items-center ml-6">
-                  <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
-                  <p className='text-black font-bold text-[13px]'>Продажа</p>
-                </div>
-                <div className='flex justify-center ml-5'>
-                  <h2 className='font-bold text-[26px]'>250</h2>
-                </div>
-              </div>
-            </div>
-            
-            <div className='w-[130px] h-[130px] ml-8'>
-              <Doughnut data={data2} options={options2} />
-            </div>
-
+          
+          <div className='w-[130px] h-[130px] ml-3'>
+            <Doughnut data={data} options={options} />
           </div>
+
         </div>
 
-        <div id='middleContainer' className='flex flex-row h-[300px] w-[1540px] my-[30px] justify-center gap-x-[30px]'>
-          <div className='w-auto h-[300px]'>
 
-            <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
-              
-              <h4 className='font-bold text-[20px] ml-6'>Сводка закупок/реализации</h4>
-              
-              <div className='flex items-center ml-6'>
-                <div className="flex items-center ml-1">
-                  <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
-                  <p className='text-[#989898] text-[12px]'>Закуплено</p>
-                </div>
-
-                <div className="flex items-center ml-6">
-                  <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
-                  <p className='text-[#989898] text-[12px]'>Реализовано</p>
-                </div>
-              </div>
-
-
-
-              <div className='w-full h-[210px] ml-10'>
-                <Line options={optionsLine} data={dataLine}/>
-              </div>
-
-            </div>
-          </div>
-
-
-          <div className='w-auto h-[300px]'>
-            <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
-            
-            <h4 className='font-bold text-[20px] ml-6'>Стоимость закупки/реализации</h4>
-              
-              <div className='flex items-center ml-6'>
+        <div className='w-[620px] h-[200px] flex justify-center bg-white shadow-md rounded-[27px]'>
+          <div className='w-full h-auto '>
+            <div className='w-full h-auto flex mt-10 ml-[90px]'>
                 
-                <div className="flex items-center ml-1">
+                {/* img */}
+              <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
 
-                  <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
-                  <p className='text-[#989898] text-[12px]'>Закупка</p>
-                </div>
-
-                <div className="flex items-center ml-6">
-                  <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
-                  <p className='text-[#989898] text-[12px]'>Реализации</p>
-                </div>
               </div>
 
-
-              <div className='w-full h-[210px] ml-10'>
-                <Line options={optionsLine2} data={dataLine2}/>
+              {/* layer */}
+              <div className='h-auto ml-[10px]'>
+                <h1 className='font-semibold text-[18px]'>Молочная продукция</h1>
+                <div className='w-full bg-black h-[1px] rounded-[10px]'></div>
+                <h1 className='font-semibold text-[18px]'>Молоко</h1>
               </div>
 
             </div>
+            <div className='flex justify-center mt-12'>
+              <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
+                <div className='bg-[#8E34FF] shadow-md w-[70%] h-full rounded-[10px]'></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div id='bottomContainer' className='flex flex-row h-[280px] w-[1540px] '>
+
+        <div className=' flex w-[430px] h-[200px] bg-white shadow-md rounded-[27px] items-center'>
+        <div className='absolute ml-4 mb-[140px]'><h1 className='text-[18px] font-bold'>Цена</h1></div>
+          <div className='flex items-center w-auto ml-3'>
+
+            <div className='h-auto'>
+              <div className="flex items-center ml-1">
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Закупка</p>
+              </div>
+              <div className='flex justify-center'>
+                <h2 className='font-bold text-[26px]'>250</h2>
+              </div>
+            </div>
+
+            <div className='h-auto'>
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-black font-bold text-[13px]'>Продажа</p>
+              </div>
+              <div className='flex justify-center ml-5'>
+                <h2 className='font-bold text-[26px]'>250</h2>
+              </div>
+            </div>
+          </div>
+          
+          <div className='w-[130px] h-[130px] ml-8'>
+            <Doughnut data={data2} options={options2} />
+          </div>
 
         </div>
-      </main>
-    </NavPanel>
+      </div>
+
+      <div id='middleContainer' className='flex flex-row h-[300px] w-[1540px] my-[30px] justify-center gap-x-[30px]'>
+        <div className='w-auto h-[300px]'>
+
+          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
+            
+            <h4 className='font-bold text-[20px] ml-6'>Сводка закупок/реализации</h4>
+            
+            <div className='flex items-center ml-6'>
+              <div className="flex items-center ml-1">
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Закуплено</p>
+              </div>
+
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Реализовано</p>
+              </div>
+            </div>
+
+
+
+            <div className='w-full h-[210px] ml-10'>
+              <Line options={optionsLine} data={dataLine}/>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div className='w-auto h-[300px]'>
+          <div className='w-auto h-auto pt-8 pb-[20px] rounded-[27px] bg-white px-[30px] shadow-md'>
+           
+           <h4 className='font-bold text-[20px] ml-6'>Стоимость закупки/реализации</h4>
+            
+            <div className='flex items-center ml-6'>
+              
+              <div className="flex items-center ml-1">
+
+                <div className="w-2 h-2 bg-[#FF6666FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Закупка</p>
+              </div>
+
+              <div className="flex items-center ml-6">
+                <div className="w-2 h-2 bg-[#42BD53FF] rounded-[50%] mr-2"></div>
+                <p className='text-[#989898] text-[12px]'>Реализации</p>
+              </div>
+            </div>
+
+
+            <div className='w-full h-[210px] ml-10'>
+              <Line options={optionsLine2} data={dataLine2}/>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div id='bottomContainer' className='flex flex-row h-[280px] w-[1540px] '>
+
+      </div>
+    </main>
   );
 }

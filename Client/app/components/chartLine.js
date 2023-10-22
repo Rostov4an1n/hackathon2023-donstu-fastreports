@@ -56,38 +56,3 @@ export const optionsLine = { // Настройки для графика Line Ch
         },
     },
 };
-
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; // Метки для оси x
-
-const datalabels = [20, 18, 16, 13, 10, 9, 12, 3, 1, 20, 18, 16]; // Данные для Dataset 1
-const datalabels2 = [29, 27, 25, 22, 19, 18, 21, 22, 1, 29, 27, 25]; // Данные для Dataset 2
-
-export const dataLine = {
-    labels, // Подставляем метки для оси x
-    datasets: [{
-            label: false, // Название Dataset 1
-            data: datalabels, // Данные для Dataset 1
-            backgroundColor: '#FF6666FF', // Цвет заливки графика (красный)
-            borderColor: "#FF6666FF", // Цвет границы графика (красный)
-            yAxisID: 'y', // Использовать ось y
-            fill: {
-                target: 'origin', // Заполнить область под графиком
-                above: '#FF666644', // Цвет заливки выше графика (красный с прозрачностью)
-                below: '#F9000000', // Цвет заливки ниже графика (красный с прозрачностью)
-            },
-            borderDashOffset: 3,
-        },
-        {
-            label: false, // Название Dataset 2
-            data: datalabels2, // Данные для Dataset 2
-            backgroundColor: '#42BD53FF', // Цвет заливки графика (зеленый)
-            borderColor: "#42BD53FF", // Цвет границы графика (зеленый)
-            yAxisID: 'y1', // Использовать ось y1
-            fill: {
-                target: 'origin', // Заполнить область под графиком
-                above: '#42BD533D', // Цвет заливки выше графика (зеленый с прозрачностью)
-                below: '#F9000000' // Цвет заливки ниже графика (красный с прозрачностью)
-            }
-        },
-    ],
-}
