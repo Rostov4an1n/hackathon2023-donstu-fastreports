@@ -5,8 +5,8 @@ import NavPanel from './components/navPanel'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Tinkoff App',
-  description: 'Hackathon app for Tinkoff',
+  title: 'Fast Reports',
+  description: 'Hackathon app',
 }
 
 export default function RootLayout({ children }) {
