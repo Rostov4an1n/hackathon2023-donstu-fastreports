@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import { Line, Doughnut } from 'react-chartjs-2';
 import { optionsLine, dataLine } from './components/chartLine';
 import { optionsLine2, dataLine2 } from './components/chartLine2'
@@ -8,6 +9,7 @@ import {data2, options2} from './components/ChartPie2';
 
 
 export default function Home() {
+  
   return (
     <main className='flex flex-col h-screen w-screen items-center'>
       <div id='topContainer' className='flex flex-row h-[200px] w-[1540px] mt-[69px] gap-x-[30px]'>
@@ -48,8 +50,12 @@ export default function Home() {
             <div className='w-full h-auto flex mt-10 ml-[90px]'>
                 
                 {/* img */}
-              <div className='w-[60px] h-[60px] bg-pink-500 rounded-[15px]'>
-
+              <div className='w-[60px] h-[60px] rounded-[15px]'>
+                <Image
+                  src="/milk.png"
+                  width={70}
+                  height={70}
+                />
               </div>
 
               {/* layer */}
@@ -60,11 +66,18 @@ export default function Home() {
               </div>
 
             </div>
-            <div className='flex justify-center mt-12'>
-              <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
-                <div className='bg-[#8E34FF] shadow-md w-[70%] h-full rounded-[10px]'></div>
+            <div className='mt-6'>
+              <div className='flex'>
+                <h1 className='font-bold text-[18px] ml-[59px]'>Спрос</h1>
+                <h1 className='font-bold text-[18px] mr-8 ml-auto'>70%</h1>
+              </div>
+              <div className='flex justify-center mt-2'>
+                <div className='bg-white shadow-md h-[10px] w-[80%] rounded-[10px]'>
+                  <div className='bg-[#8E34FF] bar shadow-md h-full rounded-[10px]'></div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 

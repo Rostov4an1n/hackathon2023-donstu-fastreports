@@ -39,8 +39,6 @@ export const options2 = {
 
 
 export const data2 = {
-
-    labels: ['Продажа', 'Закупка'],
     datasets: [{
         data: [20, 50], // Ваши данные здесь
         backgroundColor: [

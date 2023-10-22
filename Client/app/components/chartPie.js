@@ -39,8 +39,6 @@ export const options = {
 
 
 export const data = {
-
-    labels: ['Реализовано', 'Закуплено'],
     datasets: [{
         data: [30, 50], // Ваши данные здесь
         backgroundColor: [
