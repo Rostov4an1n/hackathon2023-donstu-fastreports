@@ -73,7 +73,7 @@ ROOT_URLCONF = 'FastReportsServer.urls'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'api.authentication.ApiKeyAuthentication',
         # ...
     ],
     # ...

@@ -1,17 +1,22 @@
 from typing import Optional
 from django.views.decorators.cache import cache_page
 from Products.models import Product, SoldProduct
-from .serializers import ProductSerializer, SoldProductSerializer
+from .serializers import ProductSerializer, SoldProductSerializer, ApiKeySerializer
 import logging
-from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.response import Response
 from .serializers import UserSerializer
 from django.contrib.auth import login, authenticate
 import os
 from django.views.decorators.csrf import csrf_exempt
-
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import ApiKey
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import authentication_classes, permission_classes
+from .authentication import ApiKeyAuthentication
 
 # Создайте каталог для хранения лог-файлов
 log_directory = 'logs'
@@ -26,6 +31,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+@authentication_classes([ApiKeyAuthentication, SessionAuthentication, BasicAuthentication])
 @api_view(['GET'])
 @permission_classes([AllowAny])
 @cache_page(60 * 15)  # Кеширование на 15 минут
@@ -124,7 +130,8 @@ def loging_user(request):
         request (Request): HTTP-запрос с данными пользователя для аутентификации.
 
     Returns:
-        Response: HTTP-ответ с данными пользователя, если аутентификация успешна, или ошибкой, если аутентификация не удалась.
+        Response: HTTP-ответ с данными пользователя, если аутентификация успешна,
+        или ошибкой, если аутентификация не удалась.
     """
     if request.method == 'POST':
         username = request.data.get('username')
@@ -156,3 +163,12 @@ def register_user(request):
 
         logger.error(f'Ошибка при регистрации нового пользователя: {serializer.errors}')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CreateApiKey(APIView):
+    @classmethod
+    def post(cls, request):
+        api_key = ApiKey()
+        api_key.save()
+        serializer = ApiKeySerializer(api_key)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

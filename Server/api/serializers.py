@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from Products.models import Product, SoldProduct
 from user.models import User
+from .models import ApiKey
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -19,3 +20,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'password']
+
+
+class ApiKeySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApiKey
+        fields = ('key', 'created', 'is_active')
+

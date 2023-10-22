@@ -59,3 +59,5 @@ RuntimeError: You called this URL via POST, but the URL doesn't end in a slash a
 2023-10-22 10:27:25,463 [WARNING] [django.request]: Not Found: /product/
 2023-10-22 10:27:27,518 [WARNING] [django.request]: Not Found: /api/product/
 2023-10-22 10:27:40,970 [WARNING] [django.request]: Not Found: /api/product/
+2023-10-22 10:37:21,767 [INFO] [django.utils.autoreload]: C:\PojectCase\hackathon2023-donstu-fastreports\Server\api\serializers.py changed, reloading.
+2023-10-22 11:06:40,875 [INFO] [api.views]: «арегистрирован новый пользователь с именем testusername.
